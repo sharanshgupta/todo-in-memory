@@ -1,11 +1,9 @@
-FROM java:8-jre
+FROM openjdk:8-jdk-alpine
 MAINTAINER Sharansh Gupta <sharanshgupta@hotmail.com>
 
-LABEL VERSION="@project.version@"
-LABEL DESCRIPTION="@project.description@"
-LABEL GIT_COMMIT_ID="@git.commit.id@"
+LABEL VERSION="0.0.1-SNAPSHOT"
+LABEL DESCRIPTION="todo-in-memory"
 
-ADD ./@project.build.finalName@.jar /app/
-CMD ["java", "-Xmx200m", "-jar", "/app/@project.build.finalName@.jar"]
-
-EXPOSE 8383
+ARG JAR_FILE=target/todo-in-memory-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
