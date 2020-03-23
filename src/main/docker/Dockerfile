@@ -8,4 +8,4 @@ LABEL GIT_COMMIT_ID="@git.commit.id@"
 ADD ./@project.build.finalName@.jar /app/
 CMD ["java", "-Xmx200m", "-jar", "/app/@project.build.finalName@.jar"]
 
-EXPOSE 8080
+EXPOSE 8383
