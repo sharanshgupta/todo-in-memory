@@ -20,7 +20,6 @@ public class ToDoRepository implements CommonRepository<ToDo> {
     @Override
     public ToDo save(ToDo domain) {
         ToDo existing = toDos.get(domain.getId());
-    System.out.println("ToDo - " + existing.toString());
         if(Objects.nonNull(existing)) {
             existing.setCreated(LocalDateTime.now());
             existing.setModified(LocalDateTime.now());
