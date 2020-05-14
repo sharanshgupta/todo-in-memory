@@ -23,6 +23,8 @@ public class ToDoController {
 
     private CommonRepository<ToDo> repository;
 
+    int x =2;
+
     @Autowired
     public ToDoController(CommonRepository<ToDo> repository) {
         this.repository = repository;
@@ -36,6 +38,14 @@ public class ToDoController {
     @GetMapping("/todo")
     public ResponseEntity<Iterable<ToDo>> getToDos() {
         return ResponseEntity.ok(repository.findAll());
+    }
+
+    @GetMapping("/hello")
+    public ResponseEntity<String> hello() throws RuntimeException {
+        if(x == 1) {
+            throw new RuntimeException();
+        }
+        return ResponseEntity.ok("Hello");
     }
 
     @RequestMapping(value = "/todo", method = POST)
